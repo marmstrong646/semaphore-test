@@ -1,7 +1,10 @@
-all:
-  hosts:
-    10.0.4.128:
-  children:
-    my_servers:
-      hosts:
-        10.0.4.128:
+- hosts: web_servers
+  become: true
+  tasks:
+    - name: Ping servers
+      ansible.builtin.ping:
+
+    - name: Ensure Nginx is installed
+      ansible.builtin.package:
+        name: nginx
+        state: present
