@@ -3,3 +3,9 @@
   tasks:
     - name: Test connectivity
       ansible.builtin.ping:
+
+    - name: Install htop for testing
+      ansible.builtin.package:
+        name: htop
+        state: present
+      become: true
