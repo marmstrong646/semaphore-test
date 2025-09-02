@@ -1,6 +1,6 @@
 - hosts: web_servers
   gather_facts: no          # Skip fact gathering to avoid hangs if Python setup varies
-  become: true              # Required for tasks like installing packages
+  become: false             # Required for tasks like installing packages
   tasks:
     - name: Test connectivity to web servers
       ansible.builtin.ping:     # This checks SSH connectivity
