@@ -1,12 +1,12 @@
 - hosts: web_servers
-  gather_facts: no          # Skip fact gathering to avoid hangs if Python setup varies
-  become: true             # Required for tasks like installing packages
+  gather_facts: no        # skip fact gathering to avoid hangs
   tasks:
     - name: Test connectivity to web servers
-      ansible.builtin.ping:     # This checks SSH connectivity
-      # become: false           # Ping doesn't need sudo, so you can uncomment to avoid sudo for this task
+      ansible.builtin.ping:
+      become: false        # ping doesn’t require sudo
 
     - name: Ensure Nginx is installed
       ansible.builtin.package:
         name: nginx
         state: present
+      become: true         # sudo required for package installation
