@@ -1,5 +1,4 @@
 - hosts: web_servers
-  become: true
   gather_facts: no
   tasks:
     - name: Ping servers
